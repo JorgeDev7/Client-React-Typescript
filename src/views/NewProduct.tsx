@@ -3,6 +3,7 @@ import { ActionFunctionArgs, Form, Link, useActionData, redirect } from "react-r
 import ErrorMessage from "../components/ErrorMessage";
 import { addProduct } from "../services/ProductService";
 import Spinner from "../components/spinner/Spinner";
+import ProductForm from '../components/ProductForm';
 
 export async function action({ request }: ActionFunctionArgs) {
     const data = Object.fromEntries(await request.formData());
@@ -47,32 +48,7 @@ export default function NewProduct() {
                 method="POST"
             >
 
-                <div className="mb-4">
-                    <label
-                        className="text-gray-800"
-                        htmlFor="name"
-                    >Nombre Producto:</label>
-                    <input
-                        id="name"
-                        type="text"
-                        className="mt-2 block w-full p-3 bg-gray-50"
-                        placeholder="Nombre del Producto"
-                        name="name"
-                    />
-                </div>
-                <div className="mb-4">
-                    <label
-                        className="text-gray-800"
-                        htmlFor="price"
-                    >Precio:</label>
-                    <input
-                        id="price"
-                        type="number"
-                        className="mt-2 block w-full p-3 bg-gray-50"
-                        placeholder="Precio Producto. ej. 200, 300"
-                        name="price"
-                    />
-                </div>
+                <ProductForm />
 
                 <input
                     type="submit"
